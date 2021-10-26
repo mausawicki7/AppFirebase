@@ -10,7 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppFirebase">
         <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+        <activity
             android:name=".AuthActivity"
+            android:label="@string/auth_activity_title"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
