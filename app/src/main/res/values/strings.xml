@@ -2,4 +2,6 @@
     <string name="app_name">AppFirebase</string>
     <string name="auth_activity_title">Autenticación</string>
     <string name="home_activity_title">Inicio</string>
+    <string name="pref_file">com.wonder.appfirebase.PREFERENCE_FILE_KEY</string>
+    <string name="web_client_id">AIzaSyAE7gtoTrIG1_G-iZEXSEo9lTojZiLa1M0</string>
 </resources>
