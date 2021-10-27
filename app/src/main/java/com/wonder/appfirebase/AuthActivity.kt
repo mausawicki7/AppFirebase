@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -126,13 +127,14 @@ class AuthActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (resultCode == GOOGLE_SIGN_IN) {
+        if (requestCode == GOOGLE_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
 
-
                 val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+
+                Log.d("AuthActivity", "requestCode: ${account.email}")
 
                 FirebaseAuth.getInstance()
                     .signInWithCredential(credential)
@@ -144,6 +146,7 @@ class AuthActivity : AppCompatActivity() {
                         }
                     }
             } catch (e: ApiException) {
+                Log.e("AuthActivity", "error: ${e.message}")
                 showAlert()
             }
         }
